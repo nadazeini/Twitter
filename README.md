@@ -22,5 +22,5 @@ The following **bonus** features are implemented:
 ## Video Walkthrough
 
 Here's a walkthrough of implemented user stories:
-
+(iPhone 11)
 <img src='http://g.recordit.co/yq0g1gdolb.gif' title='Video Walkthrough' width='' alt='Video Walkthrough' />
