@@ -18,6 +18,12 @@ class HomeTableTableViewController: UITableViewController {
         //
         myRefreshControl.addTarget(self, action: #selector(loadTweets), for: .valueChanged)
         tableView.refreshControl = myRefreshControl
+        
+    
+    }
+    override func viewDidAppear(_ animated: Bool) {
+        super.viewDidAppear(animated)
+        loadMoreTweets()
     }
     @objc func loadTweets(){
         numberOfTweets = 20
@@ -35,6 +41,7 @@ class HomeTableTableViewController: UITableViewController {
             print("Could not retrieve tweets")
         })
     }
+    
     func loadMoreTweets(){ //call whenever get close to the end
         let myUrl = "https://api.twitter.com/1.1/statuses/home_timeline.json"
         numberOfTweets = numberOfTweets + 20
@@ -71,6 +78,8 @@ class HomeTableTableViewController: UITableViewController {
         if let imageData = data{
             cell.profileImageView.image = UIImage(data: imageData)
         }
+        cell.setFavorite(tweetArray[indexPath.row]["favorited"] as! Bool)
+        cell.tweetId = tweetArray[indexPath.row]["id"] as! Int
         return cell
     }
     
